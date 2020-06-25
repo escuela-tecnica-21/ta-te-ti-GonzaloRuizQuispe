@@ -2,6 +2,17 @@
 #include <stdlib.h>
 #include <conio2.h>
 int Tablero[3][3],Z=1,X,Y,M=1,Fila,Columna;//X,Y,Z y M Son Variables Universales.
+void VaciarTablero();
+void DibujarTablero();
+void Jugador();
+void PosicionDentroDelParametro();
+void ReconocimientoDeLugar();
+void MostrarSimbolo();
+void GraficacionEnMatriz();
+void ValidacionDeLugar();
+void Bot();
+void ValidacionMaquina();
+void DetectarWin();
 int main()
 {
     VaciarTablero();
