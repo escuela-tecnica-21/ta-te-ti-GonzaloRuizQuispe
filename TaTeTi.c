@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio2.h>
-int Tablero[3][3],Z=1,X,Y,M=1,Fila,Columna;//X,Y,Z y M Son Variables Universales.
+
+int Tablero[3][3],Z=1,X,Y,M=1,Fila,Columna,FinPartida=0;//X,Y,Z y M Son Variables Universales.
 void VaciarTablero();
 void DibujarTablero();
 void Jugador();
@@ -13,6 +14,7 @@ void ValidacionDeLugar();
 void Bot();
 void ValidacionMaquina();
 void DetectarWin();
+
 int main()
 {
     VaciarTablero();
@@ -26,14 +28,19 @@ int main()
         gotoxy(1,6);
         }
         X=1;
+        FinPartida++;
+        DetectarWin();
+        DetectarEmpate();
         while(Y!=0)
         {
         Bot();
         gotoxy(1,7);printf("                    \n");
         gotoxy(1,6);
         }
-        DetectarWin();
         Y=1;
+        FinPartida++;
+        DetectarWin();
+        DetectarEmpate();
     }
     return 0;
 }
@@ -213,14 +220,39 @@ void ValidacionMaquina(int Fila,int Columna)
 void DetectarWin()
 {
     for(X=0;X<3;X++)
-        {
-        if(Tablero[X][0]==88 && Tablero[X][1]==88 && Tablero[X][2]==88)
-        {
-            printf("Has Ganado");
-        }
-        else if(Tablero[0][X]==88 && Tablero[1][X]==88 && Tablero[2][X]==88)
-        {
-            printf("Has Ganado");
-        }
-        }
+    {
+    if(Tablero[X][0]==88 && Tablero[X][1]==88 && Tablero[X][2]==88 || Tablero[0][X]==88 && Tablero[1][X]==88 && Tablero[2][X]==88)
+    {
+        printf("Has Ganado                                ");
+        textcolor(0);
+        exit(-1);
+    }
+    if(Tablero[X][0]==79 && Tablero[X][1]==79 && Tablero[X][2]==79 || Tablero[0][X]==79 && Tablero[1][X]==79 && Tablero[2][X]==79)
+    {
+        printf("Perdiste                                ");
+        textcolor(0);
+        exit(-1);
+    }
+    }
+    if(Tablero[0][0]==88 && Tablero[1][1]==88 && Tablero[2][2]==88 || Tablero[0][2]==88 && Tablero[1][1]==88 && Tablero[2][0]==88)
+    {
+        printf("Has Ganado Magnifica Jugada");
+        textcolor(0);
+        exit(-1);
+    }
+    if(Tablero[0][0]==79 && Tablero[1][1]==79 && Tablero[2][2]==79 || Tablero[0][2]==79 && Tablero[1][1]==79 && Tablero[2][0]==79)
+    {
+        printf("Gano La Maquina En Azar Que Triste...");
+        textcolor(0);
+        exit(-1);
+    }
+}
+void DetectarEmpate()
+{
+    if(FinPartida==9)
+    {
+        printf("Empate Magistral...Bueno...¿Quien Tiene Hambre?");
+        textcolor(0);
+        exit(-1);
+    }
 }
