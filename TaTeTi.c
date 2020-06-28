@@ -214,13 +214,13 @@ void DetectarWin()
 {
     for(X=0;X<3;X++)
         {
-        if(Tablero[X][0]==Tablero[X][1] && Tablero[X][1]==Tablero[X][2])
+        if(Tablero[X][0]==88 && Tablero[X][1]==88 && Tablero[X][2]==88)
         {
-            break;
+            printf("Has Ganado");
         }
-        else if(Tablero[0][X]==Tablero[1][X] && Tablero[1][X]==Tablero[2][X])
+        else if(Tablero[0][X]==88 && Tablero[1][X]==88 && Tablero[2][X]==88)
         {
-            break;
+            printf("Has Ganado");
         }
         }
 }
